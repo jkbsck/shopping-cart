@@ -13,23 +13,25 @@ function App() {
     <BrowserRouter>
       <Navbar />
       <Social />
-      <Switch>
-        <Route exact path="/">
-          <Home />
-        </Route>
-        <Route path="/shop">
-          <Shop />
-        </Route>
-        <Route path="/cart">
-          <Cart />
-        </Route>
-        <Route path="/info">
-          <Info />
-        </Route>
-        <Route path="*">
-          <Error />
-        </Route>
-      </Switch>
+      <div className="content">
+        <Switch>
+          <Route exact path="/">
+            <Home />
+          </Route>
+          <Route path="/shop">
+            <Shop />
+          </Route>
+          <Route path="/cart">
+            <Cart />
+          </Route>
+          <Route path="/info">
+            <Info />
+          </Route>
+          <Route path="*">
+            <Error />
+          </Route>
+        </Switch>
+      </div>
     </BrowserRouter>
   );
 }

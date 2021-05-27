@@ -1,16 +1,21 @@
 // VARIABLES
 $bg-color: #faf9f9;
-$bg-active-nav: #d7bba8;
+// $bg-active-nav: #d7bba8;
 $text-color: #273469;
-// $text-light-blue: #00a5cf;
 $text-light-blue: #20a4f3;
 $text-crimson: #d7263d;
+
+// IMPORTS
+@import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Quicksand:wght@300;400;500;600;700&display=swap");
+
 // RESET
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
   color: $text-color;
+  font-family: "Quicksand", sans-serif;
 }
 a {
   text-decoration: none;
@@ -22,17 +27,18 @@ a {
 li {
   list-style: none;
 }
-// -----------------------------------
+// ELEMENTS
 body {
   background: $bg-color;
 }
+
 // NAVBAR
 .nav-wrapper {
   width: 100%;
   height: 60px;
   position: fixed;
-  border-bottom: solid 1px $text-color;
-  z-index: 1;
+  border-bottom: solid 1px $text-light-blue;
+  z-index: 2;
   ul {
     height: 100%;
     display: flex;
@@ -42,25 +48,33 @@ body {
   }
   li {
     width: 20%;
+    padding: 5px;
     a {
       width: 100%;
       height: 100%;
       display: flex;
       justify-content: center;
       align-items: center;
+      border-radius: 8px;
     }
     .active {
-      background: $bg-active-nav;
+      background: transparentize($text-light-blue, 0.95);
+      border-bottom: solid 1px transparentize($text-light-blue, 0.8);
+      border-top: solid 1px transparentize($text-light-blue, 0.8);
+      h3 {
+        font-weight: 700;
+      }
     }
   }
   h3 {
     margin: 10px;
-    font-size: 16px;
+    padding: 0 5px;
+    font-size: 20px;
   }
   .divider {
     height: 60%;
     width: 1px;
-    background: $text-color;
+    background: transparentize($text-light-blue, 0.8);
   }
 }
 @media screen and (min-width: 576px) {
@@ -78,6 +92,7 @@ aside.social {
   align-items: center;
   position: fixed;
   right: 0;
+  z-index: 1;
 }
 .social-wrapper {
   position: relative;
@@ -106,12 +121,13 @@ aside.social {
   align-items: stretch;
   flex-direction: column;
   border: solid 1px $text-light-blue;
-  border-radius: 5px;
+  border-bottom-left-radius: 20px;
+  border-top-left-radius: 20px;
   width: 40%;
   padding: 5px 0;
   cursor: pointer;
   box-shadow: -1px 1px 2px transparentize($text-light-blue, 0.5);
-  background-color: transparentize($color: $text-light-blue, $amount: 0.96);
+  background-color: lighten($color: $text-light-blue, $amount: 40);
   .title {
     font-size: 18px;
     align-self: center;
@@ -123,19 +139,90 @@ aside.social {
   .arrow {
     align-self: center;
     fill: $text-light-blue;
+    stroke-width: 2px;
+    stroke: $text-light-blue;
+    transition: all 0.1s ease;
+  }
+  &:hover {
+    box-shadow: -2px 2px 2px transparentize($text-light-blue, 0.5);
+
+    .arrow {
+      transform: scale(1.1);
+    }
   }
 }
 .social-items {
   width: 60%;
   text-align: center;
   border: solid 1px $text-crimson;
-  border-radius: 5px;
+  border-bottom-left-radius: 5px;
+  border-top-left-radius: 5px;
   box-shadow: -1px 1px 2px transparentize($text-crimson, 0.5);
-  background-color: transparentize($color: $text-crimson, $amount: 0.96);
+  background-color: lighten($color: $text-crimson, $amount: 49);
   .social-item {
     margin: 4px 0;
-    svg {
-      // fill: darken($text-crimson, 20);
+
+    transition: all 0.1s ease;
+
+    &:hover {
+      transform: scale(1.1);
+      svg {
+        fill: $text-crimson;
+      }
     }
+  }
+}
+
+// CONTENT
+.content {
+  position: relative;
+  top: 60px;
+}
+
+// HOME
+.home {
+  .title-wrapper {
+    width: 100%;
+    padding-top: 100px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    .tv-icon {
+      position: absolute;
+      font-size: 340px;
+      top: -10px;
+      // svg {
+      stroke-width: 0px;
+      // fill: transparentize($text-crimson, 0.35);
+      // }
+    }
+    .title-bottom {
+      position: relative;
+      top: -40px;
+    }
+
+    .title {
+      position: relative;
+      // top: 30px;
+      font-family: "Pattaya", sans-serif;
+      font-size: 50px;
+    }
+    .title-1 {
+      font-size: 80px;
+    }
+
+    .title-3 {
+      font-family: "Quicksand", sans-serif;
+      font-weight: 300;
+      color: $text-crimson;
+      font-size: 36px;
+    }
+  }
+  .description {
+    margin: 20px auto;
+    width: 72%;
+    text-align: center;
+    font-size: 18px;
   }
 }
