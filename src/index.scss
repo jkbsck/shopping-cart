@@ -1,11 +1,141 @@
+// VARIABLES
+$bg-color: #faf9f9;
+$bg-active-nav: #d7bba8;
+$text-color: #273469;
+// $text-light-blue: #00a5cf;
+$text-light-blue: #20a4f3;
+$text-crimson: #d7263d;
 // RESET
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
+  color: $text-color;
+}
+a {
+  text-decoration: none;
+  color: $text-light-blue;
+  &:hover {
+    color: $text-color;
+  }
+}
+li {
+  list-style: none;
 }
 // -----------------------------------
+body {
+  background: $bg-color;
+}
 // NAVBAR
 .nav-wrapper {
-  background: cyan;
+  width: 100%;
+  height: 60px;
+  position: fixed;
+  border-bottom: solid 1px $text-color;
+  z-index: 1;
+  ul {
+    height: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 0;
+  }
+  li {
+    width: 20%;
+    a {
+      width: 100%;
+      height: 100%;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+    }
+    .active {
+      background: $bg-active-nav;
+    }
+  }
+  h3 {
+    margin: 10px;
+    font-size: 16px;
+  }
+  .divider {
+    height: 60%;
+    width: 1px;
+    background: $text-color;
+  }
+}
+@media screen and (min-width: 576px) {
+  .nav-wrapper {
+    li {
+      width: 10%;
+    }
+  }
+}
+
+// SOCIAL
+aside.social {
+  height: 100vh;
+  display: flex;
+  align-items: center;
+  position: fixed;
+  right: 0;
+}
+.social-wrapper {
+  position: relative;
+  right: -60px;
+  width: 100px;
+  display: flex;
+  align-items: center;
+  justify-content: flex-end;
+  font-size: 24px;
+  transition: all 0.2s ease-in;
+  &.show {
+    right: 0;
+    .social-toggle {
+      position: absolute;
+      width: 60%;
+      left: 40%;
+      top: -40px;
+      .title {
+        display: none;
+      }
+    }
+  }
+}
+.social-toggle {
+  display: flex;
+  align-items: stretch;
+  flex-direction: column;
+  border: solid 1px $text-light-blue;
+  border-radius: 5px;
+  width: 40%;
+  padding: 5px 0;
+  cursor: pointer;
+  box-shadow: -1px 1px 2px transparentize($text-light-blue, 0.5);
+  background-color: transparentize($color: $text-light-blue, $amount: 0.96);
+  .title {
+    font-size: 18px;
+    align-self: center;
+    margin-top: 5px;
+    writing-mode: vertical-rl;
+    text-orientation: sideways;
+    transform: rotate(180deg);
+  }
+  .arrow {
+    align-self: center;
+    fill: $text-light-blue;
+  }
+}
+.social-items {
+  width: 60%;
+  text-align: center;
+  border: solid 1px $text-crimson;
+  border-radius: 5px;
+  box-shadow: -1px 1px 2px transparentize($text-crimson, 0.5);
+  background-color: transparentize($color: $text-crimson, $amount: 0.96);
+  .social-item {
+    margin: 4px 0;
+    svg {
+      // fill: darken($text-crimson, 20);
+    }
+  }
 }
