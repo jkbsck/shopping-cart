@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
+  const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("girls");
 
@@ -14,7 +15,6 @@ const AppProvider = ({ children }) => {
     try {
       const response = await fetch(`${url}${searchTerm}`);
       const data = await response.json();
-      // console.log(data);
 
       if (data.length > 0) {
         const newShows = data.map((show) => {
@@ -32,7 +32,6 @@ const AppProvider = ({ children }) => {
       } else {
         setShows([]);
       }
-      // const newShows = data
     } catch (error) {
       console.log(error);
     }

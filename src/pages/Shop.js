@@ -23,9 +23,9 @@ const Shop = () => {
             ref={searchValue}
             onChange={handleSearch}
           />
-          <button className="search-btn btn" type="submit">
+          <div className="search-btn btn">
             <BiSearch />
-          </button>
+          </div>
         </form>
       </div>
       <ShowList />
@@ -34,11 +34,3 @@ const Shop = () => {
 };
 
 export default Shop;
-
-// id: show.show.id,
-//             name: show.show.name,
-//             genres: show.show.genres,
-//             premiered: show.show.premiered,
-//             rating: show.show.rating,
-//             image: show.show.image.original,
-//             summary: show.show.summary,
