@@ -1,11 +1,19 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { BiTv } from "react-icons/bi";
 
 const Home = () => {
+  const [redScreen, setRedScreen] = useState(false);
+  useEffect(() => {
+    const timeoutFirst = setTimeout(() => setRedScreen(true), 1000);
+    const timeoutSecond = setTimeout(() => setRedScreen(false), 1100);
+    return () => {
+      clearTimeout(timeoutFirst, timeoutSecond);
+    };
+  }, []);
+
   return (
     <section className="home">
       <div className="title-wrapper">
-        <BiTv className="tv-icon" />
         <div className="title-top">
           <span className="title title-1">TV</span>
         </div>
@@ -14,6 +22,8 @@ const Home = () => {
           <span className="title title-3">(w)</span>
           <span className="title title-4">pper</span>
         </div>
+        <div className={`screen ${redScreen ? "screen-red" : ""}`}></div>
+        <BiTv className="tv-icon" />
       </div>
       <div className="description">
         <p>Tired of spending hours watching Netflix every day?</p>

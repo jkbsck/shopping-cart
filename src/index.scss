@@ -1,9 +1,10 @@
 // VARIABLES
 $bg-color: #faf9f9;
-// $bg-active-nav: #d7bba8;
 $text-color: #273469;
 $text-light-blue: #20a4f3;
 $text-crimson: #d7263d;
+$raisin-black: #221d23;
+$color-snow: #fbf5f3;
 
 // IMPORTS
 @import url("https://fonts.googleapis.com/css2?family=Pattaya&display=swap");
@@ -14,7 +15,6 @@ $text-crimson: #d7263d;
   margin: 0;
   padding: 0;
   box-sizing: border-box;
-  color: $text-color;
   font-family: "Quicksand", sans-serif;
 }
 a {
@@ -29,7 +29,8 @@ li {
 }
 // ELEMENTS
 body {
-  background: $bg-color;
+  background-color: $raisin-black;
+  color: $text-color;
 }
 
 // NAVBAR
@@ -39,6 +40,9 @@ body {
   position: fixed;
   border-bottom: solid 1px $text-light-blue;
   z-index: 2;
+  background-color: lighten($color: $text-light-blue, $amount: 40);
+  color: $text-color;
+  box-shadow: 0 5px 1px transparentize($color: $text-light-blue, $amount: 0.7);
   ul {
     height: 100%;
     display: flex;
@@ -56,9 +60,19 @@ body {
       justify-content: center;
       align-items: center;
       border-radius: 8px;
+      box-shadow: 2px 2px 1px
+        transparentize($color: $text-light-blue, $amount: 0.7);
+      &:hover {
+        background: repeating-linear-gradient(
+          45deg,
+          transparentize($color: $text-light-blue, $amount: 0.98),
+          transparentize($color: $text-light-blue, $amount: 0.88) 3px,
+          transparentize($color: $text-light-blue, $amount: 0.98) 6px
+        );
+      }
     }
     .active {
-      background: transparentize($text-light-blue, 0.95);
+      background: transparentize($text-light-blue, 0.85);
       border-bottom: solid 1px transparentize($text-light-blue, 0.8);
       border-top: solid 1px transparentize($text-light-blue, 0.8);
       h3 {
@@ -70,11 +84,12 @@ body {
     margin: 10px;
     padding: 0 5px;
     font-size: 20px;
+    color: $text-color;
   }
   .divider {
     height: 60%;
     width: 1px;
-    background: transparentize($text-light-blue, 0.8);
+    background: transparentize($text-color, 0.8);
   }
 }
 @media screen and (min-width: 576px) {
@@ -113,6 +128,9 @@ aside.social {
       .title {
         display: none;
       }
+    }
+    .social-items {
+      box-shadow: -1px 1px 2px transparentize($text-crimson, 0.5);
     }
   }
 }
@@ -157,13 +175,13 @@ aside.social {
   border: solid 1px $text-crimson;
   border-bottom-left-radius: 5px;
   border-top-left-radius: 5px;
-  box-shadow: -1px 1px 2px transparentize($text-crimson, 0.5);
   background-color: lighten($color: $text-crimson, $amount: 49);
   .social-item {
     margin: 4px 0;
-
     transition: all 0.1s ease;
-
+    svg {
+      fill: $text-color;
+    }
     &:hover {
       transform: scale(1.1);
       svg {
@@ -177,10 +195,12 @@ aside.social {
 .content {
   position: relative;
   top: 60px;
+  height: calc(100vh - 60px);
 }
 
 // HOME
 .home {
+  min-height: 100%;
   .title-wrapper {
     width: 100%;
     padding-top: 100px;
@@ -188,14 +208,47 @@ aside.social {
     flex-direction: column;
     justify-content: center;
     align-items: center;
+    text-shadow: 2px 1px $text-crimson;
     .tv-icon {
       position: absolute;
       font-size: 340px;
       top: -10px;
-      // svg {
-      stroke-width: 0px;
-      // fill: transparentize($text-crimson, 0.35);
-      // }
+      color: lighten($color: $raisin-black, $amount: 3);
+      pointer-events: none;
+    }
+    .screen {
+      height: 160px;
+      width: 240px;
+      position: absolute;
+      top: 100px;
+      background: repeating-linear-gradient(
+        45deg,
+        transparentize($color: $text-light-blue, $amount: 0.95),
+        transparentize($color: $text-light-blue, $amount: 0.9) 3px,
+        transparentize($color: $text-light-blue, $amount: 0.95) 6px
+      );
+      box-shadow: 0px 100px 50px
+        transparentize($color: $text-light-blue, $amount: 0.8);
+      &:hover {
+        background: repeating-linear-gradient(
+          45deg,
+          transparentize($color: $text-crimson, $amount: 0.95),
+          transparentize($color: $text-crimson, $amount: 0.9) 3px,
+          transparentize($color: $text-crimson, $amount: 0.95) 6px
+        );
+        box-shadow: 0px 100px 50px
+          transparentize($color: $text-crimson, $amount: 0.8);
+      }
+    }
+    .screen-red {
+      background: repeating-linear-gradient(
+        45deg,
+        transparentize($color: $text-crimson, $amount: 0.95),
+        transparentize($color: $text-crimson, $amount: 0.9) 3px,
+        transparentize($color: $text-crimson, $amount: 0.95) 6px
+      );
+      box-shadow: 0px 100px 50px
+        transparentize($color: $text-crimson, $amount: 0.8);
     }
     .title-bottom {
       position: relative;
@@ -204,9 +257,9 @@ aside.social {
 
     .title {
       position: relative;
-      // top: 30px;
       font-family: "Pattaya", sans-serif;
       font-size: 50px;
+      color: $text-light-blue;
     }
     .title-1 {
       font-size: 80px;
@@ -220,9 +273,17 @@ aside.social {
     }
   }
   .description {
-    margin: 20px auto;
+    margin: 20px auto 0 auto;
     width: 72%;
     text-align: center;
     font-size: 18px;
+    & > p {
+      color: $text-light-blue;
+    }
+
+    :last-child {
+      margin-bottom: 0;
+      padding-bottom: 1rem;
+    }
   }
 }
