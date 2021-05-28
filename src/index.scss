@@ -287,3 +287,36 @@ aside.social {
     }
   }
 }
+
+// SHOP
+.form-wrapper {
+  width: 100%;
+  height: 100px;
+  background-color: $text-crimson;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  .search-form {
+    height: 60px;
+    min-width: 240px;
+    padding: 12px 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: $color-snow;
+    border-radius: 30px;
+  }
+  .search-input {
+    height: 36px;
+    border-top-left-radius: 18px;
+    border-bottom-left-radius: 18px;
+    border: none;
+    background-color: $text-crimson;
+  }
+  .search-btn {
+    height: 36px;
+    border-top-right-radius: 18px;
+    border-bottom-right-radius: 18px;
+    background-color: $text-light-blue;
+  }
+}
