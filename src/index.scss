@@ -320,3 +320,125 @@ aside.social {
     background-color: $text-light-blue;
   }
 }
+
+// SHOW LIST
+.shows-wrapper {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+
+// SINGLE SHOW
+.single-show {
+  margin-top: 16px;
+  background-color: lighten($color: $text-light-blue, $amount: 37);
+  box-shadow: 2px 3px 0px transparentize($color: $text-light-blue, $amount: 0.5);
+  color: $text-color;
+  border: solid 1px $text-color;
+  border-radius: 10px;
+  border-top-left-radius: 30px;
+  &:hover {
+    box-shadow: 2px 3px 0px
+      transparentize($color: $text-light-blue, $amount: 0.2);
+  }
+  .img-wrapper {
+    margin: 3px;
+    border-top-left-radius: 30px;
+    overflow: hidden;
+    border: solid 1px $text-color;
+    width: max-content;
+  }
+  .default-img {
+    width: 210px;
+    height: 295px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    color: $text-light-blue;
+    h1 {
+      font-size: 80px;
+    }
+  }
+  .info-wrapper {
+    .title {
+      font-weight: 700;
+      padding: 5px;
+      margin: 0;
+      color: darken($color: $text-crimson, $amount: 5);
+    }
+    display: flex;
+    flex-wrap: wrap;
+    text-align: center;
+    & > span {
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+    }
+    .rating {
+      height: 30px;
+      width: 80px;
+      flex-direction: row;
+      justify-self: center;
+      align-self: center;
+      border-radius: 15px;
+      background-color: transparentize($color: $text-color, $amount: 0.05);
+      color: gold;
+      .star {
+        margin-right: 5px;
+        color: gold;
+      }
+    }
+    .genres {
+      border-top: solid 1px
+        transparentize($color: $text-light-blue, $amount: 0.9);
+    }
+    .premiered {
+      border-top: solid 1px
+        transparentize($color: $text-light-blue, $amount: 0.9);
+    }
+  }
+  .actions-wrapper {
+    border-top: solid 1px
+      transparentize($color: $text-light-blue, $amount: 0.75);
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+    height: 50px;
+    .more {
+      padding: 5px 10px;
+      cursor: pointer;
+      border-radius: 5px;
+      background-color: transparentize($color: $text-light-blue, $amount: 0.8);
+      span {
+        margin-right: 3px;
+      }
+      .arrow {
+        font-size: 20px;
+        margin-bottom: 2px;
+      }
+      &:hover {
+        background-color: transparentize(
+          $color: $text-light-blue,
+          $amount: 0.7
+        );
+        .arrow {
+          transform: scale(1.1);
+        }
+      }
+    }
+    .add-to-cart {
+      .add-to-cart-btn {
+        height: 30px;
+        color: lighten($color: $text-light-blue, $amount: 20);
+        background-color: $text-color;
+        display: flex;
+        align-items: center;
+        font-weight: 500;
+        &:hover {
+          background-color: darken($color: $text-color, $amount: 7);
+        }
+      }
+    }
+  }
+}

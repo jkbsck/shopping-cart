@@ -24,7 +24,7 @@ const AppProvider = ({ children }) => {
             genres: show.show.genres,
             premiered: show.show.premiered,
             rating: show.show.rating,
-            image: show.show.image,
+            image: show.show.image ? show.show.image.medium : null,
             summary: show.show.summary,
           };
         });

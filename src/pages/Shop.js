@@ -1,15 +1,16 @@
 import React, { useRef } from "react";
 import { BiSearch } from "react-icons/bi";
 import { useGlobalContext } from "../context";
+import ShowList from "../components/ShowList";
 
 const Shop = () => {
-  const { setSearchTerm, shows, loading } = useGlobalContext();
+  const { setSearchTerm } = useGlobalContext();
   const searchValue = useRef("");
 
   const handleSearch = () => {
     setSearchTerm(searchValue.current.value);
   };
-  console.log(shows);
+
   return (
     <section className="shop">
       <div className="form-wrapper">
@@ -27,17 +28,7 @@ const Shop = () => {
           </button>
         </form>
       </div>
-      <div className="shows-wrapper">
-        {shows.map((show) => {
-          return (
-            <div key={show.id}>
-              <span>name:{show.name}</span>
-              <span>genre:{show.genres[0]}</span>
-              <img src={show.image.original} alt={show.name} />
-            </div>
-          );
-        })}
-      </div>
+      <ShowList />
     </section>
   );
 };
