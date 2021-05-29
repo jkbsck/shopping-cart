@@ -40,7 +40,11 @@ body {
   position: fixed;
   border-bottom: solid 1px $text-light-blue;
   z-index: 2;
-  background-color: lighten($color: $text-light-blue, $amount: 40);
+  background: radial-gradient(
+    circle at center,
+    $text-light-blue,
+    $text-color 160%
+  );
   color: $text-color;
   box-shadow: 0 5px 1px transparentize($color: $text-light-blue, $amount: 0.7);
   ul {
@@ -61,21 +65,20 @@ body {
       justify-content: center;
       align-items: center;
       border-radius: 8px;
-      box-shadow: 2px 2px 1px
-        transparentize($color: $text-light-blue, $amount: 0.7);
+      box-shadow: 2px 2px 1px transparentize($color: $text-color, $amount: 0.5);
       &:hover {
         background: repeating-linear-gradient(
           45deg,
-          transparentize($color: $text-light-blue, $amount: 0.98),
-          transparentize($color: $text-light-blue, $amount: 0.88) 3px,
-          transparentize($color: $text-light-blue, $amount: 0.98) 6px
+          transparentize($color: $text-color, $amount: 0.9),
+          transparentize($color: $text-color, $amount: 0.86) 3px,
+          transparentize($color: $text-color, $amount: 0.9) 6px
         );
       }
     }
     .active {
-      background: transparentize($text-light-blue, 0.85);
-      border-bottom: solid 1px transparentize($text-light-blue, 0.8);
-      border-top: solid 1px transparentize($text-light-blue, 0.8);
+      background: transparentize($text-color, 0.8);
+      border-bottom: solid 1px transparentize($text-color, 0.75);
+      border-top: solid 1px transparentize($text-color, 0.8);
       h3 {
         font-weight: 700;
       }
