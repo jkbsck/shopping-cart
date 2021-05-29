@@ -8,7 +8,7 @@ const AppProvider = ({ children }) => {
   const [shows, setShows] = useState([]);
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
-  const [searchTerm, setSearchTerm] = useState("girls");
+  const [searchTerm, setSearchTerm] = useState("The Wire");
   const [fetchError, setFetchError] = useState(false);
 
   const fetchShows = useCallback(async () => {

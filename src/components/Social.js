@@ -26,11 +26,7 @@ const Social = () => {
   return (
     <aside className="social">
       <div className={`social-wrapper ${show && "show"}`}>
-        <div
-          className="social-toggle"
-          onClick={() => handleShow()}
-          // style={{ bottom: `${socialHeight / 2 + 20}px` }}
-        >
+        <div className="social-toggle" onClick={() => handleShow()}>
           {show ? (
             <BiRightArrow className="arrow" />
           ) : (

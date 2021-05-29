@@ -102,7 +102,7 @@ body {
     background: transparentize($text-color, 0.8);
   }
 }
-@media screen and (min-width: 576px) {
+@media screen and (min-width: 768px) {
   .nav-wrapper {
     li {
       width: 10%;
@@ -297,12 +297,18 @@ aside.social {
     }
   }
 }
+@media screen and (min-width: 576px) {
+  .home {
+    .description {
+      margin: 80px auto 0 auto;
+    }
+  }
+}
 
 // SHOP
 .form-wrapper {
   width: 100%;
   height: 100px;
-  // background-color: $text-crimson;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -346,10 +352,112 @@ aside.social {
   flex-wrap: wrap;
   display: flex;
 }
+.no-shows {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $text-crimson;
+  font-size: 50px;
+  text-align: center;
+  padding: 10%;
+}
+
+// CART
+.cart-wrapper {
+  width: 100%;
+  flex-wrap: wrap;
+  display: flex;
+}
+.cart-summary {
+  display: flex;
+  flex-direction: column;
+  margin-top: 20px;
+  padding: 5px;
+  background: radial-gradient(
+    farthest-corner at -800px -200px,
+    transparentize($text-light-blue, 0.05),
+    lighten($text-light-blue, 30)
+  );
+  color: $text-color;
+  border: solid 1px transparentize($text-light-blue, 0.8);
+  border-radius: 3px;
+  box-shadow: 1px 3px 2px transparentize($text-light-blue, 0.7);
+  & > div {
+    border-top: solid 1px transparentize($color: $text-light-blue, $amount: 0.5);
+    padding: 5px;
+  }
+  .title-wrapper {
+    border: none;
+    text-align: center;
+  }
+  .items-wrapper {
+    & > div {
+      display: flex;
+      justify-content: space-between;
+      & > span:last-child {
+        font-weight: 700;
+      }
+    }
+  }
+  .amount-wrapper,
+  .total-wrapper {
+    display: flex;
+    justify-content: space-between;
+    font-weight: 700;
+    & > span:last-child {
+      color: $text-crimson;
+    }
+  }
+  .actions-wrapper {
+    display: flex;
+    justify-content: space-evenly;
+    button {
+      background-color: $text-color;
+      color: $text-light-blue;
+      border: solid 1px darken($color: $text-color, $amount: 10);
+      box-shadow: 2px 2px 2px $text-color;
+      max-width: 40%;
+      font-size: 14px;
+      padding: 3px;
+      &:hover {
+        background-color: lighten($text-color, 5);
+      }
+    }
+  }
+}
+.cart-items-wrapper {
+  border-top: solid 1px transparentize($color: $text-light-blue, $amount: 0.8);
+  margin-top: 20px;
+  width: 100%;
+  .title {
+    color: $text-light-blue;
+    margin: 10px 15%;
+  }
+  .cart-items {
+    display: flex;
+    flex-wrap: wrap;
+  }
+}
+.cart-empty {
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  color: $text-light-blue;
+  font-size: 50px;
+  padding: 10%;
+  text-align: center;
+}
 
 // SINGLE SHOW
 .single-show {
   margin-top: 16px;
+  margin-bottom: 10px;
   background: radial-gradient(
     farthest-corner at 300px -200px,
     transparentize($text-light-blue, 0.2),
@@ -365,7 +473,7 @@ aside.social {
       transparentize($color: $text-light-blue, $amount: 0.2);
   }
   .img-wrapper {
-    margin: 3px;
+    margin: 6px 10px;
     border-top-left-radius: 30px;
     overflow: hidden;
     border: solid 1px $text-color;
@@ -499,6 +607,8 @@ aside.social {
   align-items: center;
   color: $text-light-blue;
   font-size: 50px;
+  padding: 10%;
+  text-align: center;
   .loading-icon {
     animation: loading 1s linear infinite;
   }
@@ -525,4 +635,39 @@ aside.social {
   font-size: 50px;
   text-align: center;
   padding: 10%;
+}
+
+// INFO
+.info {
+  width: 100%;
+  height: 100%;
+  font-size: 260px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: $text-light-blue;
+  .wrapper {
+    position: relative;
+  }
+  .trigger {
+    position: absolute;
+    width: 260px;
+    height: 260px;
+    border-radius: 50%;
+    bottom: 2rem;
+    z-index: 3;
+    cursor: pointer;
+  }
+  .left {
+    position: absolute;
+    font-size: 50px;
+    top: 195px;
+    left: 75px;
+  }
+  .right {
+    position: absolute;
+    font-size: 50px;
+    top: 195px;
+    right: 70px;
+  }
 }

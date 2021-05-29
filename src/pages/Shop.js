@@ -31,6 +31,7 @@ const Shop = () => {
             name="search"
             ref={searchValue}
             onChange={handleSearch}
+            placeholder="e.g. The Wire"
           />
           <div className="search-btn btn">
             <BiSearch />

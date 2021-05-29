@@ -45,7 +45,7 @@ const SingleShow = (show) => {
   };
 
   return (
-    <article className="single-show col-9 offset-1">
+    <article className="single-show col-9 col-sm-7 col-md-5 col-lg-4 col-xl-3 offset-1 offset-sm-2 offset-md-3 offset-lg-1 offset-xl-2">
       <div className="img-wrapper">
         {image ? <img src={image} alt={name} /> : defaultImage}
       </div>
