@@ -1,6 +1,6 @@
 import React, { useContext, useState, useEffect, useCallback } from "react";
 
-const url = "http://api.tvmaze.com/search/shows?q=";
+const url = "https://api.tvmaze.com/search/shows?q=";
 
 const AppContext = React.createContext();
 

@@ -1,5 +1,5 @@
 import React from "react";
-import { BrowserRouter, Route, Switch } from "react-router-dom";
+import { BrowserRouter, Route, Switch, Redirect } from "react-router-dom";
 import Navbar from "./components/Navbar";
 import Social from "./components/Social";
 import Home from "./pages/Home";
@@ -27,6 +27,10 @@ function App() {
           <Route path="/info">
             <Info />
           </Route>
+          <Route exact path="/shopping-cart">
+            <Redirect to="/" />
+          </Route>
+
           <Route path="*">
             <Error />
           </Route>
