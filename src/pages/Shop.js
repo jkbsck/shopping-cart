@@ -1,10 +1,19 @@
 import React, { useRef } from "react";
-import { BiSearch } from "react-icons/bi";
+import { BiSearch, BiError } from "react-icons/bi";
 import { useGlobalContext } from "../context";
 import ShowList from "../components/ShowList";
 
+const showError = (
+  <div className="fetch-error">
+    <span>Failed to fetch data.</span>
+    <span>
+      <BiError className="error-icon" />
+    </span>
+  </div>
+);
+
 const Shop = () => {
-  const { setSearchTerm } = useGlobalContext();
+  const { setSearchTerm, fetchError } = useGlobalContext();
   const searchValue = useRef("");
 
   const handleSearch = () => {
@@ -28,7 +37,7 @@ const Shop = () => {
           </div>
         </form>
       </div>
-      <ShowList />
+      {fetchError ? showError : <ShowList />}
     </section>
   );
 };

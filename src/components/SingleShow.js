@@ -1,6 +1,7 @@
-import React, { useState, useRef } from "react";
+import React, { useState, useRef, useEffect } from "react";
 import { FaImage, FaStar } from "react-icons/fa";
 import { IoIosArrowDown, IoIosArrowUp } from "react-icons/io";
+import { useGlobalContext } from "../context";
 
 const defaultImage = (
   <div className="default-img">
@@ -10,9 +11,23 @@ const defaultImage = (
   </div>
 );
 
-const SingleShow = ({ name, genres, premiered, rating, summary, image }) => {
+const SingleShow = (show) => {
+  const { id, name, genres, premiered, rating, summary, image } = show;
+
+  const { cart, addToCart } = useGlobalContext();
+
   const [more, setMore] = useState(false);
+  const [inCart, setInCart] = useState(false); // initial state depends on item being in cart or not - fix
   const moreContainer = useRef(null);
+
+  useEffect(() => {
+    let searchItem = cart.find((item) => item.id === id);
+    if (searchItem) {
+      setInCart(true);
+    } else {
+      setInCart(false);
+    }
+  }, []);
 
   const handleMore = () => {
     moreContainer.current.innerHTML = summary;
@@ -22,6 +37,11 @@ const SingleShow = ({ name, genres, premiered, rating, summary, image }) => {
       moreContainer.current.classList.add("show");
     }
     setMore(!more);
+  };
+
+  const handleCart = () => {
+    setInCart(!inCart);
+    addToCart(show);
   };
 
   return (
@@ -58,7 +78,12 @@ const SingleShow = ({ name, genres, premiered, rating, summary, image }) => {
           )}
         </div>
         <div className="add-to-cart">
-          <button className="btn add-to-cart-btn">Add To Cart</button>
+          <button
+            className={`btn add-to-cart-btn ${inCart ? "in-cart" : ""}`}
+            onClick={handleCart}
+          >
+            {inCart ? "Remove From Cart" : "Add To Cart"}
+          </button>
         </div>
       </div>
     </article>

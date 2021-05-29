@@ -9,6 +9,7 @@ const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [loading, setLoading] = useState(false);
   const [searchTerm, setSearchTerm] = useState("girls");
+  const [fetchError, setFetchError] = useState(false);
 
   const fetchShows = useCallback(async () => {
     setLoading(true);
@@ -34,17 +35,28 @@ const AppProvider = ({ children }) => {
       }
     } catch (error) {
       console.log(error);
+      setFetchError(true);
     }
     setLoading(false);
-    console.log(shows);
   }, [searchTerm]);
 
   useEffect(() => {
     fetchShows();
   }, [searchTerm, fetchShows]);
 
+  const addToCart = (show) => {
+    if (cart.find((item) => item.id === show.id)) {
+      const newCart = cart.filter((item) => item.id !== show.id);
+      setCart(newCart);
+    } else {
+      setCart([...cart, { ...show }]);
+    }
+  };
+
   return (
-    <AppContext.Provider value={{ setSearchTerm, shows, loading }}>
+    <AppContext.Provider
+      value={{ setSearchTerm, shows, loading, fetchError, cart, addToCart }}
+    >
       {children}
     </AppContext.Provider>
   );

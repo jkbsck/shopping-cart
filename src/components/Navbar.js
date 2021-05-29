@@ -1,7 +1,10 @@
 import React from "react";
 import { NavLink } from "react-router-dom";
+import { useGlobalContext } from "../context";
 
 const Navbar = () => {
+  const { cart } = useGlobalContext();
+
   return (
     <nav className="nav-wrapper">
       <ul>
@@ -17,9 +20,11 @@ const Navbar = () => {
           </NavLink>
         </li>
         <div className="divider"></div>
-        <li>
+        <li className={cart.length > 0 ? "cart-with-items" : ""}>
           <NavLink to="/cart" activeClassName="active">
-            <h3>Cart</h3>
+            <h3>
+              Cart <span>{cart.length > 0 ? `(${cart.length})` : ""}</span>
+            </h3>
           </NavLink>
         </li>
         <div className="divider"></div>
